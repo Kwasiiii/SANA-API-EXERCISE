@@ -1,6 +1,7 @@
 import express from 'express'
 import { CustomerController } from './controller/customer.controller'
 import { createConnection } from 'typeorm'
+import { BankAccountController } from './controller/bankaccount.controller';
 
 
 // createConnection({
@@ -28,7 +29,8 @@ import { createConnection } from 'typeorm'
 // })
 
 class Server {
-  customerController: CustomerController;
+  customerController: CustomerController
+  bankAccountController: BankAccountController
   app: express.Application;
 
   constructor(){
@@ -63,8 +65,10 @@ class Server {
     })
 
     this.customerController = new CustomerController()
+    this.bankAccountController = new BankAccountController()
 
     this.app.use('/api/users/',this.customerController.router) // Configure the new routes of the controller post
+    this.app.use('/api/bankaccounts/', this.bankAccountController.router)
   }
 
   /**

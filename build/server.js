@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const customer_controller_1 = require("./controller/customer.controller");
 const typeorm_1 = require("typeorm");
+const bankaccount_controller_1 = require("./controller/bankaccount.controller");
 // createConnection({
 //   type: 'postgres',
 //   host: 'localhost',
@@ -64,7 +65,9 @@ class Server {
                 name: 'user'
             });
             this.customerController = new customer_controller_1.CustomerController();
+            this.bankAccountController = new bankaccount_controller_1.BankAccountController();
             this.app.use('/api/users/', this.customerController.router); // Configure the new routes of the controller post
+            this.app.use('/api/bankaccounts/', this.bankAccountController.router);
         });
     }
     /**
