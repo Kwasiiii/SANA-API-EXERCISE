@@ -10,7 +10,9 @@ export class CustomerServices {
   }
 
   index = async() => {
-    const customers = await this.customerRepository.find()
+    const customers = await this.customerRepository.find({
+      relations: ['bankAccount']
+    })
     return customers
   } 
 

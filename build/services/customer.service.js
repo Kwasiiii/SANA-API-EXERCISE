@@ -15,7 +15,9 @@ const customer_repository_1 = require("../repository/customer.repository");
 class CustomerServices {
     constructor() {
         this.index = () => __awaiter(this, void 0, void 0, function* () {
-            const customers = yield this.customerRepository.find();
+            const customers = yield this.customerRepository.find({
+                relations: ['bankAccount']
+            });
             return customers;
         });
         this.create = (customer) => __awaiter(this, void 0, void 0, function* () {
