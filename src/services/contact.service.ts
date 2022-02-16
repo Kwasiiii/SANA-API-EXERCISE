@@ -10,11 +10,13 @@ export class ContactService {
   }
 
   index = async () => {
-    const contact = await this.contactRepository.find()
+    const contact = await this.contactRepository.find({
+      relations: ['tag']
+    })
     return contact
   }
 
-  create = async (contact: ContactEntity) => {
+  create = async (contact: ContactEntity ) => {
     const newContact = await this.contactRepository.save(contact)
     return newContact
   }

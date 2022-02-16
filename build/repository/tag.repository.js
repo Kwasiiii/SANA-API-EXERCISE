@@ -12,6 +12,6 @@ const tag_entity_1 = require("../database/entities/tag.entity");
 let TagRepository = class TagRepository extends typeorm_1.Repository {
 };
 TagRepository = __decorate([
-    (0, typeorm_1.EntityRepository)(tag_entity_1.tagEntity)
+    (0, typeorm_1.EntityRepository)(tag_entity_1.TagEntity)
 ], TagRepository);
 exports.TagRepository = TagRepository;

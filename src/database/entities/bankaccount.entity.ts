@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne } from 'typeorm'
+import { CustomerEntity } from './customer.entity'
 import { TagEntity } from './tag.entity'
 
 @Entity('bank account')
@@ -12,6 +13,6 @@ export class BankAccountEntity{
   @Column()
   sortCode: number
 
-  @OneToMany(() => TagEntity, tag => tag.id)
+  @OneToMany(() => TagEntity, tag => tag.bankAccount)
   tag: TagEntity[]
 }

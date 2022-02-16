@@ -11,7 +11,7 @@ export class CustomerServices {
 
   index = async() => {
     const customers = await this.customerRepository.find({
-      relations: ['bankAccount']
+      relations: ['bankAccount', 'contact', 'tag']
     })
     return customers
   } 

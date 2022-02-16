@@ -3,11 +3,13 @@ import { CustomerController } from './controller/customer.controller'
 import { createConnection } from 'typeorm'
 import { BankAccountController } from './controller/bankaccount.controller'
 import { ContactController } from './controller/contact.controller'
+import { TagController } from './controller/tag.controller'
 
 class Server {
   customerController: CustomerController
   bankAccountController: BankAccountController
   contactController: ContactController
+  tagController: TagController
   app: express.Application;
 
   constructor(){
@@ -43,11 +45,13 @@ class Server {
 
     this.customerController = new CustomerController()
     this.bankAccountController = new BankAccountController()
+    this.contactController = new ContactController()
+    this.tagController = new TagController()
 
     this.app.use('/api/users/',this.customerController.router) // Configure the new routes of the controller post
     this.app.use('/api/bankaccounts/', this.bankAccountController.router)
     this.app.use('/api/contacts/', this.contactController.router)
-    this.app.use('/api/tags/', this.contactController.router)
+    this.app.use('/api/tags/', this.tagController.router)
   }
 
   /**

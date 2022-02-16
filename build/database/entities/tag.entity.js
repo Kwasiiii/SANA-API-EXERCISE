@@ -9,34 +9,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.tagEntity = void 0;
+exports.TagEntity = void 0;
 const typeorm_1 = require("typeorm");
 const customer_entity_1 = require("./customer.entity");
 const bankaccount_entity_1 = require("./bankaccount.entity");
-let tagEntity = class tagEntity {
+const contact_entity_1 = require("./contact.entity");
+let TagEntity = class TagEntity {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], tagEntity.prototype, "id", void 0);
+], TagEntity.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], tagEntity.prototype, "tagName", void 0);
+], TagEntity.prototype, "tagName", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     (0, typeorm_1.Generated)("uuid"),
     __metadata("design:type", Number)
-], tagEntity.prototype, "tagCode", void 0);
+], TagEntity.prototype, "tagCode", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => customer_entity_1.CustomerEntity, customer => customer.tag),
+    (0, typeorm_1.ManyToOne)(() => customer_entity_1.CustomerEntity, customer => customer.tag, {
+        onDelete: 'CASCADE'
+    }),
     __metadata("design:type", customer_entity_1.CustomerEntity)
-], tagEntity.prototype, "customer", void 0);
+], TagEntity.prototype, "customer", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => contact_entity_1.ContactEntity, contact => contact.tag),
+    __metadata("design:type", contact_entity_1.ContactEntity)
+], TagEntity.prototype, "contact", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => bankaccount_entity_1.BankAccountEntity, bankAccount => bankAccount),
     __metadata("design:type", bankaccount_entity_1.BankAccountEntity)
-], tagEntity.prototype, "bankAccount", void 0);
-tagEntity = __decorate([
+], TagEntity.prototype, "bankAccount", void 0);
+TagEntity = __decorate([
     (0, typeorm_1.Entity)('tag')
-], tagEntity);
-exports.tagEntity = tagEntity;
+], TagEntity);
+exports.TagEntity = TagEntity;

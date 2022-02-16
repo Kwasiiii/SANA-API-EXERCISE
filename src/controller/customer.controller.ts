@@ -18,16 +18,14 @@ export class  CustomerController {
   }
 
   create = async (req: Request, res: Response) => {
-    const {bankAccount, ...body} = req.body
     const customer = req.body as CustomerEntity
     const newCustomer = await this.customerService.create(customer)
     res.send(newCustomer)
   }
 
   update = async (req: Request, res: Response) => {
-    const {bankAccount, ...body} = req.body
     const customer = req.body as CustomerEntity
-    const id = req['params']['id']
+    const id = req.params.id
     res.send(this.customerService.update(customer, Number(id)))
   }
 

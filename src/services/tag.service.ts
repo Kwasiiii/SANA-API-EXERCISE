@@ -11,7 +11,9 @@ export class TagService {
   }
 
   index = async () => {
-    const tag = await this.tagRepository.find()
+    const tag = await this.tagRepository.find({
+      // relations: ['customer', 'bankAccount', 'contact' ]
+    })
     return tag
   } 
 

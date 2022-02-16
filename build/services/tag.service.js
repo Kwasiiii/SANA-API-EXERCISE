@@ -9,30 +9,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BankAccountService = void 0;
+exports.TagService = void 0;
 const typeorm_1 = require("typeorm");
-const bankaccount_repository_1 = require("../repository/bankaccount.repository");
-class BankAccountService {
+const tag_repository_1 = require("../repository/tag.repository");
+class TagService {
     constructor() {
         this.index = () => __awaiter(this, void 0, void 0, function* () {
-            const bankAccounts = yield this.bankAccountRepository.find({
-                relations: ['tag']
+            const tag = yield this.tagRepository.find({
+            // relations: ['customer', 'bankAccount', 'contact' ]
             });
-            return bankAccounts;
+            return tag;
         });
-        this.create = (bankAccount) => __awaiter(this, void 0, void 0, function* () {
-            const newBankAccount = yield this.bankAccountRepository.save(bankAccount);
-            return newBankAccount;
+        this.create = (tag) => __awaiter(this, void 0, void 0, function* () {
+            const newTag = yield this.tagRepository.save(tag);
+            return newTag;
         });
-        this.update = (bankAccount, id) => __awaiter(this, void 0, void 0, function* () {
-            const updatedBankAccount = yield this.bankAccountRepository.update(id, bankAccount);
-            return updatedBankAccount;
+        this.update = (tag, id) => __awaiter(this, void 0, void 0, function* () {
+            const updatedTag = yield this.tagRepository.update(id, tag);
+            return updatedTag;
         });
         this.delete = (id) => __awaiter(this, void 0, void 0, function* () {
-            const deletedPost = yield this.bankAccountRepository.delete(id);
-            return deletedPost;
+            const deletedTag = yield this.tagRepository.delete(id);
+            return deletedTag;
         });
-        this.bankAccountRepository = (0, typeorm_1.getConnection)('user').getCustomRepository(bankaccount_repository_1.BankAccountRepository);
+        this.tagRepository = (0, typeorm_1.getConnection)('user').getCustomRepository(tag_repository_1.TagRepository);
     }
 }
-exports.BankAccountService = BankAccountService;
+exports.TagService = TagService;

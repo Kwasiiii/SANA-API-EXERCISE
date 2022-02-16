@@ -28,11 +28,13 @@ __decorate([
     __metadata("design:type", String)
 ], ContactEntity.prototype, "email", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => customer_entity_1.CustomerEntity, customer => customer.contact),
+    (0, typeorm_1.ManyToOne)(() => customer_entity_1.CustomerEntity, customer => customer.contact, {
+        onDelete: 'CASCADE'
+    }),
     __metadata("design:type", customer_entity_1.CustomerEntity)
 ], ContactEntity.prototype, "customer", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => tag_entity_1.tagEntity, tag => tag.id),
+    (0, typeorm_1.OneToMany)(() => tag_entity_1.TagEntity, tag => tag.contact),
     __metadata("design:type", Array)
 ], ContactEntity.prototype, "tag", void 0);
 ContactEntity = __decorate([

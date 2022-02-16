@@ -16,7 +16,7 @@ class CustomerServices {
     constructor() {
         this.index = () => __awaiter(this, void 0, void 0, function* () {
             const customers = yield this.customerRepository.find({
-                relations: ['bankAccount']
+                relations: ['bankAccount', 'contact', 'tag']
             });
             return customers;
         });

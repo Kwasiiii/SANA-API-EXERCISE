@@ -9,30 +9,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BankAccountService = void 0;
+exports.ContactService = void 0;
 const typeorm_1 = require("typeorm");
-const bankaccount_repository_1 = require("../repository/bankaccount.repository");
-class BankAccountService {
+const contact_repository_1 = require("../repository/contact.repository");
+class ContactService {
     constructor() {
         this.index = () => __awaiter(this, void 0, void 0, function* () {
-            const bankAccounts = yield this.bankAccountRepository.find({
+            const contact = yield this.contactRepository.find({
                 relations: ['tag']
             });
-            return bankAccounts;
+            return contact;
         });
-        this.create = (bankAccount) => __awaiter(this, void 0, void 0, function* () {
-            const newBankAccount = yield this.bankAccountRepository.save(bankAccount);
-            return newBankAccount;
+        this.create = (contact) => __awaiter(this, void 0, void 0, function* () {
+            const newContact = yield this.contactRepository.save(contact);
+            return newContact;
         });
-        this.update = (bankAccount, id) => __awaiter(this, void 0, void 0, function* () {
-            const updatedBankAccount = yield this.bankAccountRepository.update(id, bankAccount);
-            return updatedBankAccount;
+        this.update = (contact, id) => __awaiter(this, void 0, void 0, function* () {
+            const updatedContact = yield this.contactRepository.update(id, contact);
+            return updatedContact;
         });
         this.delete = (id) => __awaiter(this, void 0, void 0, function* () {
-            const deletedPost = yield this.bankAccountRepository.delete(id);
-            return deletedPost;
+            const deletedContact = yield this.contactRepository.delete(id);
+            return deletedContact;
         });
-        this.bankAccountRepository = (0, typeorm_1.getConnection)('user').getCustomRepository(bankaccount_repository_1.BankAccountRepository);
+        this.contactRepository = (0, typeorm_1.getConnection)('user').getCustomRepository(contact_repository_1.ContactRepository);
     }
 }
-exports.BankAccountService = BankAccountService;
+exports.ContactService = ContactService;

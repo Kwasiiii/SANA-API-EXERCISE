@@ -22,10 +22,14 @@ export class CustomerEntity {
   @JoinColumn()
   bankAccount: BankAccountEntity
 
-  @OneToMany(() => ContactEntity, contact => contact.id)
+  @OneToMany(() => ContactEntity, contact => contact.customer,{
+    cascade: true
+  })
   contact: ContactEntity[]
 
-  @OneToMany(() => TagEntity, tag => tag.id)
+  @OneToMany(() => TagEntity, tag => tag.customer,{
+    cascade: true
+  })
   tag: TagEntity[]
 }
 

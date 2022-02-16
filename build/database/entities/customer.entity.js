@@ -33,16 +33,22 @@ __decorate([
     __metadata("design:type", String)
 ], CustomerEntity.prototype, "phoneNo", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => bankaccount_entity_1.BankAccountEntity),
+    (0, typeorm_1.OneToOne)(() => bankaccount_entity_1.BankAccountEntity, bankAccount => bankAccount.customer, {
+        cascade: true
+    }),
     (0, typeorm_1.JoinColumn)(),
     __metadata("design:type", bankaccount_entity_1.BankAccountEntity)
 ], CustomerEntity.prototype, "bankAccount", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => contact_entity_1.ContactEntity, contact => contact.id),
+    (0, typeorm_1.OneToMany)(() => contact_entity_1.ContactEntity, contact => contact.customer, {
+        cascade: true
+    }),
     __metadata("design:type", Array)
 ], CustomerEntity.prototype, "contact", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => tag_entity_1.tagEntity, tag => tag.id),
+    (0, typeorm_1.OneToMany)(() => tag_entity_1.TagEntity, tag => tag.customer, {
+        cascade: true
+    }),
     __metadata("design:type", Array)
 ], CustomerEntity.prototype, "tag", void 0);
 CustomerEntity = __decorate([

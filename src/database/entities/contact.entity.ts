@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinColumn } from 'typeorm'
 import { CustomerEntity } from './customer.entity'
 import { TagEntity } from './tag.entity'
 
@@ -13,9 +13,12 @@ export class ContactEntity{
   @Column()
   email: string
 
-  @OneToMany(() => CustomerEntity, customer => customer.contact)
+  @ManyToOne(() => CustomerEntity, customer => customer.contact,{
+    onDelete: 'CASCADE'
+  })
+  // @JoinColumn()
   customer: CustomerEntity
-
-  @OneToMany(() => TagEntity, tag => tag.id)
+        
+  @OneToMany(() => TagEntity, tag => tag.contact)
   tag: TagEntity[]
 }

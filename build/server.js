@@ -16,24 +16,8 @@ const express_1 = __importDefault(require("express"));
 const customer_controller_1 = require("./controller/customer.controller");
 const typeorm_1 = require("typeorm");
 const bankaccount_controller_1 = require("./controller/bankaccount.controller");
-// createConnection({
-//   type: 'postgres',
-//   host: 'localhost',
-//   port: 5433,
-//   username: 'user',
-//   password: 'user',
-//   entities: ['build/database/entities/**/*.js'],
-//   synchronize: true,
-//   name: 'user'
-// }).then( () => {
-//   const app = express()
-//   const userController = new CustomerController()
-//   app.set('port', process.env.Port || 3000)
-//   app.use('/api/users/', userController.router)
-//   app.listen(app.get('port'), () => {
-// console.log(`🚀 Server is up and running on port: ${process.env.PORT || 3000}`)
-//   })
-// })
+const contact_controller_1 = require("./controller/contact.controller");
+const tag_controller_1 = require("./controller/tag.controller");
 class Server {
     constructor() {
         this.app = (0, express_1.default)(); // init the application
@@ -66,8 +50,12 @@ class Server {
             });
             this.customerController = new customer_controller_1.CustomerController();
             this.bankAccountController = new bankaccount_controller_1.BankAccountController();
+            this.contactController = new contact_controller_1.ContactController();
+            this.tagController = new tag_controller_1.TagController();
             this.app.use('/api/users/', this.customerController.router); // Configure the new routes of the controller post
             this.app.use('/api/bankaccounts/', this.bankAccountController.router);
+            this.app.use('/api/contacts/', this.contactController.router);
+            this.app.use('/api/tags/', this.tagController.router);
         });
     }
     /**
