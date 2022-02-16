@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm'
 import { CustomerEntity } from './customer.entity'
-import { tagEntity } from './tag.entity'
+import { TagEntity } from './tag.entity'
 
 @Entity('contact')
 export class ContactEntity{
@@ -16,6 +16,6 @@ export class ContactEntity{
   @OneToMany(() => CustomerEntity, customer => customer.contact)
   customer: CustomerEntity
 
-  @OneToMany(() => tagEntity, tag => tag.id)
-  tag: tagEntity[]
+  @OneToMany(() => TagEntity, tag => tag.id)
+  tag: TagEntity[]
 }

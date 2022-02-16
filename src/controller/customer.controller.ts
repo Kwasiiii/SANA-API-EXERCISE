@@ -1,7 +1,6 @@
 import { Router, Request, Response } from 'express'
 import { CustomerEntity } from '../database/entities/customer.entity'
 import { CustomerServices } from '../services/customer.service'
-// import { CustomerEntity } from '../database/entities/customer.entity'
 
 export class  CustomerController {
   router: Router

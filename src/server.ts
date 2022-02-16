@@ -1,36 +1,13 @@
 import express from 'express'
 import { CustomerController } from './controller/customer.controller'
 import { createConnection } from 'typeorm'
-import { BankAccountController } from './controller/bankaccount.controller';
-
-
-// createConnection({
-//   type: 'postgres',
-//   host: 'localhost',
-//   port: 5433,
-//   username: 'user',
-//   password: 'user',
-//   entities: ['build/database/entities/**/*.js'],
-//   synchronize: true,
-//   name: 'user'
-// }).then( () => {
-
-//   const app = express()
-
-//   const userController = new CustomerController()
-  
-//   app.set('port', process.env.Port || 3000)
-
-//   app.use('/api/users/', userController.router)
-
-//   app.listen(app.get('port'), () => {
-// console.log(`🚀 Server is up and running on port: ${process.env.PORT || 3000}`)
-//   })
-// })
+import { BankAccountController } from './controller/bankaccount.controller'
+import { ContactController } from './controller/contact.controller'
 
 class Server {
   customerController: CustomerController
   bankAccountController: BankAccountController
+  contactController: ContactController
   app: express.Application;
 
   constructor(){
@@ -69,6 +46,8 @@ class Server {
 
     this.app.use('/api/users/',this.customerController.router) // Configure the new routes of the controller post
     this.app.use('/api/bankaccounts/', this.bankAccountController.router)
+    this.app.use('/api/contacts/', this.contactController.router)
+    this.app.use('/api/tags/', this.contactController.router)
   }
 
   /**

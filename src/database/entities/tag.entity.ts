@@ -3,7 +3,7 @@ import { CustomerEntity } from './customer.entity'
 import { BankAccountEntity } from './bankaccount.entity'
 
 @Entity('tag')
-export class tagEntity{
+export class TagEntity{
   @PrimaryGeneratedColumn()
   id: number
 

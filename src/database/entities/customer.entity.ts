@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, Generated, OneToOne, OneToMany, ManyToOne, JoinColumn } from 'typeorm'
 import { BankAccountEntity } from './bankaccount.entity'
 import { ContactEntity } from './contact.entity'
-import { tagEntity } from './tag.entity'
+import { TagEntity } from './tag.entity'
 
 
 @Entity('customer')
@@ -25,8 +25,8 @@ export class CustomerEntity {
   @OneToMany(() => ContactEntity, contact => contact.id)
   contact: ContactEntity[]
 
-  @OneToMany(() => tagEntity, tag => tag.id)
-  tag: tagEntity[]
+  @OneToMany(() => TagEntity, tag => tag.id)
+  tag: TagEntity[]
 }
 
 
