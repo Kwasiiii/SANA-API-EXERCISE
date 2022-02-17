@@ -16,6 +16,13 @@ export class ContactService {
     return contact
   }
 
+  getOne = async( id: number) => {
+    const findContact = await this.contactRepository.findOne(id,{
+      relations: ['tag']
+    })
+    return findContact
+  }
+
   create = async (contact: ContactEntity ) => {
     const newContact = await this.contactRepository.save(contact)
     return newContact

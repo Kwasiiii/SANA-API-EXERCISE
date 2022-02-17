@@ -17,6 +17,13 @@ export class TagService {
     return tag
   } 
 
+  getOne = async( id: number) => {
+    const findtag = await this.tagRepository.findOne(id,{
+      // relations: ['bankAccount', 'contact', 'tag']
+    })
+    return findtag
+  }
+
   create = async (tag: TagEntity) => {
     const newTag = await this.tagRepository.save(tag)
     return newTag

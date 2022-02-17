@@ -15,7 +15,14 @@ export class TagController {
   index = async (req: Request, res: Response) => {
     const tags = await this.tagService.index()
     res.send(tags).json()
-  } 
+  }
+  
+  getOne = async(req: Request, res: Response) => {
+    const id = req['params']['id']
+    const getTag = await this.tagService.getOne(Number(id))
+    res.send(getTag)
+  }
+
 
   create = async (req: Request, res: Response) => {
     const tag = req['body'] as TagEntity;
@@ -35,10 +42,11 @@ export class TagController {
   } 
 
   routes(){
-    this.router.get('/', this.index);
-    this.router.post('/', this.create);
-    this.router.put('/:id', this.update);
-    this.router.delete('/:id', this.delete);
+    this.router.get('/', this.index)
+    this.router.get('/:id', this.getOne)
+    this.router.post('/', this.create)
+    this.router.put('/:id', this.update)
+    this.router.delete('/:id', this.delete)
   }
 
 }

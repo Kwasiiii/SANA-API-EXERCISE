@@ -20,6 +20,12 @@ class ContactService {
             });
             return contact;
         });
+        this.getOne = (id) => __awaiter(this, void 0, void 0, function* () {
+            const findContact = yield this.contactRepository.findOne(id, {
+                relations: ['tag']
+            });
+            return findContact;
+        });
         this.create = (contact) => __awaiter(this, void 0, void 0, function* () {
             const newContact = yield this.contactRepository.save(contact);
             return newContact;

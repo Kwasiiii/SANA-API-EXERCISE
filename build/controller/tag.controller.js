@@ -18,6 +18,11 @@ class TagController {
             const tags = yield this.tagService.index();
             res.send(tags).json();
         });
+        this.getOne = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const id = req['params']['id'];
+            const getTag = yield this.tagService.getOne(Number(id));
+            res.send(getTag);
+        });
         this.create = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const tag = req['body'];
             const newTag = yield this.tagService.create(tag);
@@ -38,6 +43,7 @@ class TagController {
     }
     routes() {
         this.router.get('/', this.index);
+        this.router.get('/:id', this.getOne);
         this.router.post('/', this.create);
         this.router.put('/:id', this.update);
         this.router.delete('/:id', this.delete);

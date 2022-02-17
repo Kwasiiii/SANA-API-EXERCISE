@@ -20,6 +20,12 @@ class TagService {
             });
             return tag;
         });
+        this.getOne = (id) => __awaiter(this, void 0, void 0, function* () {
+            const findtag = yield this.tagRepository.findOne(id, {
+            // relations: ['bankAccount', 'contact', 'tag']
+            });
+            return findtag;
+        });
         this.create = (tag) => __awaiter(this, void 0, void 0, function* () {
             const newTag = yield this.tagRepository.save(tag);
             return newTag;

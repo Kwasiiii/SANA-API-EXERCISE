@@ -18,6 +18,11 @@ class ContactController {
             const contact = yield this.contactService.index();
             res.send(contact).json();
         });
+        this.getOne = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const id = req['params']['id'];
+            const getContact = yield this.contactService.getOne(Number(id));
+            res.send(getContact);
+        });
         this.create = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const contact = req['body'];
             const newContact = yield this.contactService.create(contact);
@@ -38,6 +43,7 @@ class ContactController {
     }
     routes() {
         this.router.get('/', this.index);
+        this.router.get('/:id', this.getOne);
         this.router.post('/', this.create);
         this.router.put('/:id', this.update);
         this.router.delete('/:id', this.delete);

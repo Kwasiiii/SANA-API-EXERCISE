@@ -17,6 +17,13 @@ export class ContactController {
     res.send(contact).json()
   }
 
+  getOne = async(req: Request, res: Response) => {
+    const id = req['params']['id']
+    const getContact = await this.contactService.getOne(Number(id))
+    res.send(getContact)
+  }
+
+
   create = async (req: Request, res: Response) => {
     const contact = req['body'] as ContactEntity
     const newContact = await this.contactService.create(contact)
@@ -36,9 +43,9 @@ export class ContactController {
 
   routes(){
     this.router.get('/', this.index)
+    this.router.get('/:id', this.getOne)
     this.router.post('/', this.create)
     this.router.put('/:id', this.update)
     this.router.delete('/:id', this.delete)
-
   }
 }
