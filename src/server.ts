@@ -1,9 +1,9 @@
 import express from 'express'
-import { CustomerController } from './controller/customer.controller'
 import { createConnection } from 'typeorm'
-import { BankAccountController } from './controller/bankaccount.controller'
-import { ContactController } from './controller/contact.controller'
-import { TagController } from './controller/tag.controller'
+import { CustomerController } from './controller/customer.controller' //import customer controller
+import { BankAccountController } from './controller/bankaccount.controller' //import bank account controller
+import { ContactController } from './controller/contact.controller' //import contact controller
+import { TagController } from './controller/tag.controller' //import tag controller
 
 class Server {
   customerController: CustomerController
@@ -43,12 +43,18 @@ class Server {
       name: 'user'
     })
 
+    /**
+     * Create new instance of controllers
+     */
     this.customerController = new CustomerController()
     this.bankAccountController = new BankAccountController()
     this.contactController = new ContactController()
     this.tagController = new TagController()
 
-    this.app.use('/api/users/',this.customerController.router) // Configure the new routes of the controller post
+    /**
+     * Configure the new routes of the controllers
+     */
+    this.app.use('/api/users/',this.customerController.router)
     this.app.use('/api/bankaccounts/', this.bankAccountController.router)
     this.app.use('/api/contacts/', this.contactController.router)
     this.app.use('/api/tags/', this.tagController.router)

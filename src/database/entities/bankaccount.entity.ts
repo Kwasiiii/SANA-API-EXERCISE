@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne } from 'typeorm'
-import { CustomerEntity } from './customer.entity'
 import { TagEntity } from './tag.entity'
 
 @Entity('bank account')
