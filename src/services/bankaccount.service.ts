@@ -15,7 +15,7 @@ export class BankAccountService {
    */
   index = async () => {
     const bankAccounts = await this.bankAccountRepository.find({
-      relations: ['tag']
+      relations: ['customer','tag']
     })
     return bankAccounts
   }

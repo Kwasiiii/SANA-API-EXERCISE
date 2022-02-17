@@ -13,11 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const customer_controller_1 = require("./controller/customer.controller");
 const typeorm_1 = require("typeorm");
-const bankaccount_controller_1 = require("./controller/bankaccount.controller");
-const contact_controller_1 = require("./controller/contact.controller");
-const tag_controller_1 = require("./controller/tag.controller");
+const customer_controller_1 = require("./controller/customer.controller"); //import customer controller
+const bankaccount_controller_1 = require("./controller/bankaccount.controller"); //import bank account controller
+const contact_controller_1 = require("./controller/contact.controller"); //import contact controller
+const tag_controller_1 = require("./controller/tag.controller"); //import tag controller
 class Server {
     constructor() {
         this.app = (0, express_1.default)(); // init the application
@@ -48,11 +48,17 @@ class Server {
                 synchronize: true,
                 name: 'user'
             });
+            /**
+             * Create new instance of controllers
+             */
             this.customerController = new customer_controller_1.CustomerController();
             this.bankAccountController = new bankaccount_controller_1.BankAccountController();
             this.contactController = new contact_controller_1.ContactController();
             this.tagController = new tag_controller_1.TagController();
-            this.app.use('/api/users/', this.customerController.router); // Configure the new routes of the controller post
+            /**
+             * Configure the new routes of the controllers
+             */
+            this.app.use('/api/users/', this.customerController.router);
             this.app.use('/api/bankaccounts/', this.bankAccountController.router);
             this.app.use('/api/contacts/', this.contactController.router);
             this.app.use('/api/tags/', this.tagController.router);

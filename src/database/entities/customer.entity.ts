@@ -18,12 +18,13 @@ export class CustomerEntity {
   @Column()
   phoneNo: string
 
-  @OneToOne(() => BankAccountEntity)
-  @JoinColumn()
+  @OneToOne(() => BankAccountEntity, bankAccount => bankAccount.customer, {onDelete: 'CASCADE'})
+  // @JoinColumn()
   bankAccount: BankAccountEntity
 
   @OneToMany(() => ContactEntity, contact => contact.customer,{
-    cascade: true
+    cascade: true,
+    onDelete:'CASCADE'
   })
   contact: ContactEntity[]
 

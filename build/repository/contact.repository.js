@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContactRepository = void 0;
 const typeorm_1 = require("typeorm");
-const contact_entity_1 = require("../database/entities/contact.entity");
+const contact_entity_1 = require("../database/entities/contact.entity"); //import Contact entity
 let ContactRepository = class ContactRepository extends typeorm_1.Repository {
 };
 ContactRepository = __decorate([

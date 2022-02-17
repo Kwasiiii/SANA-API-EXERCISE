@@ -11,9 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TagEntity = void 0;
 const typeorm_1 = require("typeorm");
-const customer_entity_1 = require("./customer.entity");
-const bankaccount_entity_1 = require("./bankaccount.entity");
-const contact_entity_1 = require("./contact.entity");
+const customer_entity_1 = require("./customer.entity"); //import Customer entity
+const bankaccount_entity_1 = require("./bankaccount.entity"); //import Bank Account entity
+const contact_entity_1 = require("./contact.entity"); //import Contact entity
 let TagEntity = class TagEntity {
 };
 __decorate([
@@ -33,14 +33,17 @@ __decorate([
     (0, typeorm_1.ManyToOne)(() => customer_entity_1.CustomerEntity, customer => customer.tag, {
         onDelete: 'CASCADE'
     }),
+    (0, typeorm_1.JoinColumn)(),
     __metadata("design:type", customer_entity_1.CustomerEntity)
 ], TagEntity.prototype, "customer", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => contact_entity_1.ContactEntity, contact => contact.tag),
+    (0, typeorm_1.JoinColumn)(),
     __metadata("design:type", contact_entity_1.ContactEntity)
 ], TagEntity.prototype, "contact", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => bankaccount_entity_1.BankAccountEntity, bankAccount => bankAccount),
+    (0, typeorm_1.JoinColumn)(),
     __metadata("design:type", bankaccount_entity_1.BankAccountEntity)
 ], TagEntity.prototype, "bankAccount", void 0);
 TagEntity = __decorate([

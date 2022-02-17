@@ -16,7 +16,7 @@ export class TagService {
    */
   index = async () => {
     const tag = await this.tagRepository.find({
-      // relations: ['customer', 'bankAccount', 'contact' ]
+      relations: ['customer', 'bankAccount', 'contact' ]
     })
     return tag
   } 
@@ -28,7 +28,7 @@ export class TagService {
    */
   getOne = async( id: number) => {
     const findtag = await this.tagRepository.findOne(id,{
-      // relations: ['bankAccount', 'contact', 'tag']
+      relations: ['bankAccount', 'contact', 'tag']
     })
     return findtag
   }

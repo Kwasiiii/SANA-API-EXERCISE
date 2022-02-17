@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContactEntity = void 0;
 const typeorm_1 = require("typeorm");
-const customer_entity_1 = require("./customer.entity");
-const tag_entity_1 = require("./tag.entity");
+const customer_entity_1 = require("./customer.entity"); //import Customer entity
+const tag_entity_1 = require("./tag.entity"); //import Tag entity
 let ContactEntity = class ContactEntity {
 };
 __decorate([
@@ -31,6 +31,7 @@ __decorate([
     (0, typeorm_1.ManyToOne)(() => customer_entity_1.CustomerEntity, customer => customer.contact, {
         onDelete: 'CASCADE'
     }),
+    (0, typeorm_1.JoinColumn)(),
     __metadata("design:type", customer_entity_1.CustomerEntity)
 ], ContactEntity.prototype, "customer", void 0);
 __decorate([

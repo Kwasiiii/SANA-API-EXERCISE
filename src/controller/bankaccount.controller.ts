@@ -42,8 +42,9 @@ export class BankAccountController{
    * Method to execute update in bank account service and return updated bank account
    */
   update = async (req: Request, res: Response) => {
-    const post = req['body'] as BankAccountEntity;
+    const bankAccount = req['body'] as BankAccountEntity;
     const id =  req['params']['id']
+    res.send(this.bankAccountService.update(bankAccount, Number(id)))
   }
 
   /**

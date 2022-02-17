@@ -15,7 +15,7 @@ export class ContactService {
    */
   index = async () => {
     const contact = await this.contactRepository.find({
-      relations: ['tag']
+      relations: ['customer','tag']
     })
     return contact
   }
@@ -27,7 +27,7 @@ export class ContactService {
    */
   getOne = async( id: number) => {
     const findContact = await this.contactRepository.findOne(id,{
-      relations: ['tag']
+      relations: ['customer','tag']
     })
     return findContact
   }

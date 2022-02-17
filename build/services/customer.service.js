@@ -11,29 +11,52 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomerServices = void 0;
 const typeorm_1 = require("typeorm");
-const customer_repository_1 = require("../repository/customer.repository");
+const customer_repository_1 = require("../repository/customer.repository"); //import Customer repository
 class CustomerServices {
     constructor() {
+        /**
+         * Find method to find all customers in the database
+         * @returns all customers
+         */
         this.index = () => __awaiter(this, void 0, void 0, function* () {
             const customers = yield this.customerRepository.find({
                 relations: ['bankAccount', 'contact', 'tag']
             });
             return customers;
         });
+        /**
+         * FindOne method to retrieve a specific customer
+         * @param id of customer
+         * @returns customer
+         */
         this.getOne = (id) => __awaiter(this, void 0, void 0, function* () {
             const findCustomer = yield this.customerRepository.findOne(id, {
                 relations: ['bankAccount', 'contact', 'tag']
             });
             return findCustomer;
         });
+        /**
+         * Save method to create/add a new customer to the database
+         * @returns the new tag
+         */
         this.create = (customer) => __awaiter(this, void 0, void 0, function* () {
             const newCustomer = yield this.customerRepository.save(customer);
             return newCustomer;
         });
+        /**
+         * Update method to update a specific customer on the database
+         * @param id of customer
+         * @returns updated customer
+         */
         this.update = (customer, id) => __awaiter(this, void 0, void 0, function* () {
             const updatedCustomer = yield this.customerRepository.update(id, customer);
             return updatedCustomer;
         });
+        /**
+         * Delete method to delete specific customer from database
+         * @param id of customer
+         * @returns deleted customer
+         */
         this.delete = (id) => __awaiter(this, void 0, void 0, function* () {
             const deletedCustomer = yield this.customerRepository.delete(id);
             return deletedCustomer;

@@ -11,35 +11,54 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BankAccountController = void 0;
 const express_1 = require("express");
-const bankaccount_service_1 = require("../services/bankaccount.service");
+const bankaccount_service_1 = require("../services/bankaccount.service"); //import Bank Account service
 class BankAccountController {
     constructor() {
+        /**
+         * Method to execute index in bank account service and return bank account in json format
+         */
         this.index = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const bankAccount = yield this.bankAccountService.index();
             res.send(bankAccount).json();
         });
-        this.create = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            const bankAccount = req['body'];
-            const newBankAccount = yield this.bankAccountService.create(bankAccount);
-            res.send(newBankAccount);
-        });
+        /**
+         * Method to execute getOne method in bank account service and return bank account
+         */
         this.getOne = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const id = req['params']['id'];
             const getBankAccount = yield this.bankAccountService.getOne(Number(id));
             res.send(getBankAccount);
         });
-        this.update = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            const post = req['body'];
-            const id = req['params']['id'];
+        /**
+         * Method to execute create method in bank account service and return newly created bank account
+         */
+        this.create = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const bankAccount = req['body'];
+            const newBankAccount = yield this.bankAccountService.create(bankAccount);
+            res.send(newBankAccount);
         });
+        /**
+         * Method to execute update in bank account service and return updated bank account
+         */
+        this.update = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const bankAccount = req['body'];
+            const id = req['params']['id'];
+            res.send(this.bankAccountService.update(bankAccount, Number(id)));
+        });
+        /**
+         * Method to execute delete in bank account service and return {}
+         */
         this.delete = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const id = req['params']['id'];
             res.send(this.bankAccountService.delete(Number(id)));
         });
-        this.bankAccountService = new bankaccount_service_1.BankAccountService();
+        this.bankAccountService = new bankaccount_service_1.BankAccountService(); // create new instance of service
         this.router = (0, express_1.Router)();
         this.routes();
     }
+    /**
+     * Configure the routes of controller
+     */
     routes() {
         this.router.get('/', this.index);
         this.router.get('/:id', this.getOne);
