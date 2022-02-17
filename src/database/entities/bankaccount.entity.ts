@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, OneToOne } from 'typeorm'
-import { TagEntity } from './tag.entity'
+import { TagEntity } from './tag.entity' //import Tag entity
 
 @Entity('bank account')
 export class BankAccountEntity{

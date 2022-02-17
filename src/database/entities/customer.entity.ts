@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, Generated, OneToOne, OneToMany, ManyToOne, JoinColumn } from 'typeorm'
-import { BankAccountEntity } from './bankaccount.entity'
-import { ContactEntity } from './contact.entity'
-import { TagEntity } from './tag.entity'
+import { BankAccountEntity } from './bankaccount.entity' //import Bank Account entity
+import { ContactEntity } from './contact.entity' //import Contact entity
+import { TagEntity } from './tag.entity' //import Tag entity
 
 
 @Entity('customer')

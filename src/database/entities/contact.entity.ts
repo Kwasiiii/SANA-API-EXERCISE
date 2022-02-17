@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinColumn } from 'typeorm'
-import { CustomerEntity } from './customer.entity'
-import { TagEntity } from './tag.entity'
+import { CustomerEntity } from './customer.entity' //import Customer entity
+import { TagEntity } from './tag.entity' //import Tag entity
 
 @Entity('contact')
 export class ContactEntity{
@@ -16,7 +16,7 @@ export class ContactEntity{
   @ManyToOne(() => CustomerEntity, customer => customer.contact,{
     onDelete: 'CASCADE'
   })
-  // @JoinColumn()
+  @JoinColumn()
   customer: CustomerEntity
         
   @OneToMany(() => TagEntity, tag => tag.contact)
