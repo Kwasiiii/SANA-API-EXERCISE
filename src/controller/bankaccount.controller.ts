@@ -23,6 +23,13 @@ export class BankAccountController{
     res.send(newBankAccount)
   }
 
+  getOne = async(req: Request, res: Response) => {
+    const id = req['params']['id']
+    const getBankAccount = await this.bankAccountService.getOne(Number(id))
+    res.send(getBankAccount)
+  }
+
+
   update = async (req: Request, res: Response) => {
     const post = req['body'] as BankAccountEntity;
     const id =  req['params']['id']
@@ -36,9 +43,10 @@ export class BankAccountController{
 
 
   routes(){
-    this.router.get('/', this.index);
-    this.router.post('/', this.create);
-    this.router.put('/:id', this.update);
-    this.router.delete('/:id', this.delete);
+    this.router.get('/', this.index)
+    this.router.get('/:id', this.getOne)
+    this.router.post('/', this.create)
+    this.router.put('/:id', this.update)
+    this.router.delete('/:id', this.delete)
   }
 }

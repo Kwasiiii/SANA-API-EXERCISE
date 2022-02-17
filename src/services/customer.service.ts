@@ -16,6 +16,13 @@ export class CustomerServices {
     return customers
   } 
 
+  getOne = async( id: number) => {
+    const findCustomer = await this.customerRepository.findOne(id,{
+      relations: ['bankAccount', 'contact', 'tag']
+    })
+    return findCustomer
+  }
+
   create = async(customer: CustomerEntity) => {
     const newCustomer = await this.customerRepository.save(customer)
     return newCustomer

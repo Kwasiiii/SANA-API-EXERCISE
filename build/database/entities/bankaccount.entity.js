@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BankAccountEntity = void 0;
 const typeorm_1 = require("typeorm");
-const customer_entity_1 = require("./customer.entity");
 const tag_entity_1 = require("./tag.entity");
 let BankAccountEntity = class BankAccountEntity {
 };
@@ -27,10 +26,6 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], BankAccountEntity.prototype, "sortCode", void 0);
-__decorate([
-    (0, typeorm_1.OneToOne)(() => customer_entity_1.CustomerEntity, { onDelete: 'CASCADE' }),
-    __metadata("design:type", customer_entity_1.CustomerEntity)
-], BankAccountEntity.prototype, "customer", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(() => tag_entity_1.TagEntity, tag => tag.bankAccount),
     __metadata("design:type", Array)

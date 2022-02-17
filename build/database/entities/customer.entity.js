@@ -33,9 +33,7 @@ __decorate([
     __metadata("design:type", String)
 ], CustomerEntity.prototype, "phoneNo", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => bankaccount_entity_1.BankAccountEntity, bankAccount => bankAccount.customer, {
-        cascade: true
-    }),
+    (0, typeorm_1.OneToOne)(() => bankaccount_entity_1.BankAccountEntity),
     (0, typeorm_1.JoinColumn)(),
     __metadata("design:type", bankaccount_entity_1.BankAccountEntity)
 ], CustomerEntity.prototype, "bankAccount", void 0);

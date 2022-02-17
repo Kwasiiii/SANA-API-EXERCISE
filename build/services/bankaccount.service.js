@@ -20,6 +20,12 @@ class BankAccountService {
             });
             return bankAccounts;
         });
+        this.getOne = (id) => __awaiter(this, void 0, void 0, function* () {
+            const findBankAccount = yield this.bankAccountRepository.findOne(id, {
+                relations: ['tag']
+            });
+            return findBankAccount;
+        });
         this.create = (bankAccount) => __awaiter(this, void 0, void 0, function* () {
             const newBankAccount = yield this.bankAccountRepository.save(bankAccount);
             return newBankAccount;

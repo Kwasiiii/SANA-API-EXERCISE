@@ -15,6 +15,13 @@ export class BankAccountService {
     })
     return bankAccounts
   }
+
+  getOne = async( id: number) => {
+    const findBankAccount = await this.bankAccountRepository.findOne(id,{
+      relations: ['tag']
+    })
+    return findBankAccount
+  }
   
   create = async (bankAccount: BankAccountEntity) => {
     const newBankAccount = await this.bankAccountRepository.save(bankAccount)

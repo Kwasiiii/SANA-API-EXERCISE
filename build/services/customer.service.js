@@ -20,6 +20,12 @@ class CustomerServices {
             });
             return customers;
         });
+        this.getOne = (id) => __awaiter(this, void 0, void 0, function* () {
+            const findCustomer = yield this.customerRepository.findOne(id, {
+                relations: ['bankAccount', 'contact', 'tag']
+            });
+            return findCustomer;
+        });
         this.create = (customer) => __awaiter(this, void 0, void 0, function* () {
             const newCustomer = yield this.customerRepository.save(customer);
             return newCustomer;

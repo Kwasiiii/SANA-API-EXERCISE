@@ -18,6 +18,11 @@ class CustomerController {
             const customers = yield this.customerService.index();
             res.send(customers).json();
         });
+        this.getOne = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const id = req['params']['id'];
+            const getCustomer = yield this.customerService.getOne(Number(id));
+            res.send(getCustomer);
+        });
         this.create = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const customer = req.body;
             const newCustomer = yield this.customerService.create(customer);
@@ -38,6 +43,7 @@ class CustomerController {
     }
     routes() {
         this.router.get('/', this.index);
+        this.router.get('/:id', this.getOne);
         this.router.post('/', this.create);
         this.router.put('/:id', this.update);
         this.router.delete('/:id', this.delete);

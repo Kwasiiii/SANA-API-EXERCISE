@@ -23,6 +23,11 @@ class BankAccountController {
             const newBankAccount = yield this.bankAccountService.create(bankAccount);
             res.send(newBankAccount);
         });
+        this.getOne = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const id = req['params']['id'];
+            const getBankAccount = yield this.bankAccountService.getOne(Number(id));
+            res.send(getBankAccount);
+        });
         this.update = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const post = req['body'];
             const id = req['params']['id'];
@@ -37,6 +42,7 @@ class BankAccountController {
     }
     routes() {
         this.router.get('/', this.index);
+        this.router.get('/:id', this.getOne);
         this.router.post('/', this.create);
         this.router.put('/:id', this.update);
         this.router.delete('/:id', this.delete);

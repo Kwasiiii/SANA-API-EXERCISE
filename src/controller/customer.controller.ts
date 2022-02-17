@@ -17,6 +17,12 @@ export class  CustomerController {
     res.send(customers).json()
   }
 
+  getOne = async(req: Request, res: Response) => {
+    const id = req['params']['id']
+    const getCustomer = await this.customerService.getOne(Number(id))
+    res.send(getCustomer)
+  }
+
   create = async (req: Request, res: Response) => {
     const customer = req.body as CustomerEntity
     const newCustomer = await this.customerService.create(customer)
@@ -36,6 +42,7 @@ export class  CustomerController {
 
   routes(){
     this.router.get('/', this.index)
+    this.router.get('/:id', this.getOne)
     this.router.post('/',this.create)
     this.router.put('/:id', this.update)
     this.router.delete('/:id', this.delete)
