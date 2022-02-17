@@ -43,3 +43,11 @@ After the server is up and running use http://localhost:3000/ with the following
  - api/bankaccounts/ (To retrieve all bank accounts)
  - api/contacts/ (To retrieve all contacts)
  - api/tags/ (To retrieve all tags)
+
+## Wins 
+First time using TypeScript in creating an API, the resource given to me online was very informative. However, I found out it is the same as using JavaScript. I used my knowledge of MongoDB and research to work out the entities and relationships between them. Executing methods like find, findOne, save, update and delete was successful. This project has helped me learn to use Docker to create a PostgreSQL database. Finally, I managed my time effectively by planning and setting tasks each day. 
+
+## Future Improvements
+ - Login/Register and Logout
+ - Image upload 
+ - Seeding
